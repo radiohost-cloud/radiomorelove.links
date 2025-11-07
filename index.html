@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-," />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>radiomore.love | All Our Links In One Place</title>
     <meta name="description" content="Welcome to radiomore.love! Find all our official links for YouTube, Instagram, TikTok, and Facebook in one place. Tune in for the best music." />
@@ -110,10 +110,14 @@
           <h1 style="font-size: 2.25rem; font-weight: bold;">radiomore.love</h1>
           <p style="font-size: 1.125rem; color: #d1d5db; margin-bottom: 2rem;">Welcome! Here are all our official links. Tune in for the best music.</p>
           <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 640px; margin: auto;">
-              <a href="https://www.youtube.com/@radioluxurylove" style="display: block; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Youtube</a>
-              <a href="https://www.instagram.com/channel/Abbtoj2Ysc3rcLAG/" style="display: block; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Instagram</a>
-              <a href="https://www.tiktok.com/@radiomore.love" style="display: block; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">TikTok</a>
-              <a href="https://www.facebook.com/share/1GPhLrt2u4/" style="display: block; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Facebook</a>
+              <a href="https://www.youtube.com/@radiomorelove" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Youtube</a>
+              <a href="https://www.instagram.com/radiomore.love/" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Instagram</a>
+              <a href="https://www.tiktok.com/@radiomore.love" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">TikTok</a>
+              <a href="https://www.facebook.com/radiomore.love" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Facebook</a>
+              <a href="https://x.com/radiomorelove" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">X</a>
+              <a href="https://mastodon.social/@radiomorelove" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Mastodon</a>
+              <a href="https://bsky.app/profile/radiomorelove.bsky.social" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Bluesky</a>
+              <a href="https://uk.pinterest.com/radiomorelove/" style="display: block; text-align: center; background-color: rgba(31, 41, 55, 0.5); color: white; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Pinterest</a>
           </div>
       </div>
     </noscript>
@@ -151,7 +155,7 @@
 
         return [storedValue, setStoredValue];
       }
-
+      
       // from components/LinkCard.tsx
       const LinkCard = ({ link }) => {
         const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -180,9 +184,9 @@
               target: "_blank",
               rel: "noopener noreferrer",
               onClick: handleClick,
-              className: "w-full text-center bg-gray-800/50 backdrop-blur-sm text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:bg-red-500/20 transform hover:-translate-y-1 shadow-lg"
+              className: "w-full flex items-center justify-center bg-gray-800/50 backdrop-blur-sm text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:bg-red-500/20 transform hover:-translate-y-1 shadow-lg"
             },
-            link.title
+            React.createElement('span', null, link.title)
             )
           )
         );
@@ -232,10 +236,14 @@
       };
 
       const DEFAULT_LINKS = [
-        { id: '1', title: 'Youtube', url: 'https://www.youtube.com/@radioluxurylove', mobileUrl: 'youtube://www.youtube.com/@radioluxurylove' },
-        { id: '2', title: 'Instagram', url: 'https://www.instagram.com/channel/Abbtoj2Ysc3rcLAG/', mobileUrl: 'instagram://channel?id=Abbtoj2Ysc3rcLAG' },
-        { id: '3', title: 'TikTok', url: 'https://www.tiktok.com/@radiomore.love', mobileUrl: 'tiktok://user?username=radiomore.love' },
-        { id: '4', title: 'Facebook', url: 'https://www.facebook.com/share/1At1j1eXh1/?mibextid=wwXIfr', mobileUrl: 'fb://facewebmodal/f?href=https://www.facebook.com/share/1At1j1eXh1/?mibextid=wwXIfr' },
+        { id: '1', title: 'Youtube', url: 'https://www.youtube.com/@radiomorelove', mobileUrl: 'youtube://www.youtube.com/@radiomorelove', icon: 'youtube' },
+        { id: '2', title: 'Instagram', url: 'https://www.instagram.com/radiomore.love/', mobileUrl: 'instagram://user?username=radiomore.love', icon: 'instagram' },
+        { id: '3', title: 'TikTok', url: 'https://www.tiktok.com/@radiomore.love', mobileUrl: 'tiktok://user?username=radiomore.love', icon: 'tiktok' },
+        { id: '4', title: 'Facebook', url: 'https://www.facebook.com/radiomore.love', mobileUrl: 'fb://facewebmodal/f?href=https://www.facebook.com/radiomore.love', icon: 'facebook' },
+        { id: '5', title: 'X', url: 'https://x.com/radiomorelove', mobileUrl: 'twitter://user?screen_name=radiomorelove', icon: 'x' },
+        { id: '6', title: 'Mastodon', url: 'https://mastodon.social/@radiomorelove', icon: 'mastodon' },
+        { id: '7', title: 'Bluesky', url: 'https://bsky.app/profile/radiomorelove.bsky.social', mobileUrl: 'bsky://profile/radiomorelove.bsky.social', icon: 'bluesky' },
+        { id: '8', title: 'Pinterest', url: 'https://uk.pinterest.com/radiomorelove/', mobileUrl: 'pinterest://user/radiomorelove', icon: 'pinterest' },
       ];
 
       const preloadedState = window.__PRELOADED_STATE__;
