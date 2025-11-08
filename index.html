@@ -184,7 +184,7 @@
               target: "_blank",
               rel: "noopener noreferrer",
               onClick: handleClick,
-              className: "w-full flex items-center justify-center bg-gray-800/50 backdrop-blur-sm text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:bg-red-500/20 transform hover:-translate-y-1 shadow-lg"
+              className: "w-full flex items-center justify-center bg-gray-800/50 backdrop-blur-sm text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:bg-white/10 transform hover:-translate-y-1 shadow-lg"
             },
             React.createElement('span', null, link.title)
             )
@@ -371,7 +371,7 @@
 
 
         return (
-          React.createElement('div', { className: "min-h-screen text-white selection:bg-red-500/30 relative overflow-hidden" },
+          React.createElement('div', { className: "min-h-screen text-white selection:bg-white/20 relative overflow-hidden" },
             React.createElement(VideoBackground, null),
             React.createElement('div', { className: "absolute top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center" },
               React.createElement('button', {
@@ -409,7 +409,7 @@
             React.createElement('div', { className: "fixed top-4 right-4 sm:top-6 sm:right-6 z-50" },
               React.createElement('button', {
                   onClick: handleShare,
-                  className: "flex items-center justify-center bg-gray-800/50 backdrop-blur-sm text-white font-semibold py-2 px-5 rounded-lg transition-all duration-300 hover:bg-red-500/20 transform hover:-translate-y-1 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-red-500"
+                  className: "flex items-center justify-center bg-gray-800/50 backdrop-blur-sm text-white font-semibold py-2 px-5 rounded-lg transition-all duration-300 hover:bg-white/10 transform hover:-translate-y-1 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-white/50"
               },
                   React.createElement(ShareSvgIcon, null),
                   React.createElement('span', null, shareText)
