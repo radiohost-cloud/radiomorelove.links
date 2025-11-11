@@ -82,6 +82,52 @@
       .animate-pulse-bounce {
         animation: pulse-bounce 2s infinite ease-in-out;
       }
+      /* Style for floating hearts background */
+      .hearts-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: -1;
+      }
+      .heart {
+        position: absolute;
+        bottom: -60px;
+        background-color: white;
+        transform: rotate(-45deg);
+        animation-name: floatUp;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      .heart::before,
+      .heart::after {
+        content: '';
+        position: absolute;
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+      .heart::before {
+        top: -50%;
+        left: 0;
+      }
+      .heart::after {
+        top: 0;
+        left: 50%;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(-45deg);
+        }
+        100% {
+          transform: translateY(-110vh) translateX(var(--x-end)) rotate(var(--rot-end));
+          opacity: 0;
+        }
+      }
     </style>
     <script>
       // Disable right-click
@@ -127,6 +173,7 @@
           </div>
       </div>
     </noscript>
+    <div id="hearts-background"></div>
     <div id="root"></div>
     <script type="module">
       import React, { useState, useEffect, useRef } from 'https://esm.sh/react@18.2.0';
@@ -195,42 +242,6 @@
             React.createElement('span', null, link.title)
             )
           )
-        );
-      };
-
-      // from components/VideoBackground.tsx
-      const VIDEO_URL = 'https://cdn.jsdelivr.net/gh/radiohost-cloud/radiomorelove@main/background.mp4';
-
-      const VideoBackground = () => {
-        const videoRef = useRef(null);
-
-        useEffect(() => {
-            const videoElement = videoRef.current;
-            if (videoElement) {
-                const playPromise = videoElement.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        if (error.name !== 'AbortError') {
-                            console.warn("Browser prevented initial autoplay for video.", error);
-                        }
-                    });
-                }
-            }
-        }, []);
-
-        return (
-            React.createElement('div', { className: "fixed inset-0 -z-10 bg-black", "aria-hidden": "true" },
-                React.createElement('video', {
-                    ref: videoRef,
-                    src: VIDEO_URL,
-                    muted: true,
-                    playsInline: true,
-                    loop: true,
-                    className: 'w-full h-full object-cover absolute top-0 left-0 opacity-100',
-                    preload: "auto"
-                }),
-                React.createElement('div', { className: "absolute inset-0 bg-black/60 backdrop-blur-sm" })
-            )
         );
       };
 
@@ -344,7 +355,6 @@
 
         return (
           React.createElement('div', { className: "min-h-screen text-white selection:bg-white/20 relative overflow-hidden" },
-            React.createElement(VideoBackground, null),
             React.createElement('div', { className: "absolute top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center" },
               React.createElement('button', {
                   onClick: togglePlayPause,
@@ -394,6 +404,45 @@
           React.createElement(App, null)
         )
       );
+
+      // React component for generating the animated background
+      const FloatingHeartsBackground = () => {
+        // useMemo ensures that the hearts are generated only once when the component is mounted
+        const hearts = React.useMemo(() => Array.from({ length: 30 }).map((_, i) => {
+            const size = Math.random() * 25 + 10;     // Size from 10px to 35px
+            const xEnd = Math.random() * 200 - 100;   // Horizontal shift from -100px to 100px
+            const rotEnd = Math.random() * 90 - 45;   // Final rotation from -45deg to 45deg
+            return {
+                id: i,
+                style: {
+                    left: `${Math.random() * 100}%`,
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    '--x-end': `${xEnd}px`,
+                    '--rot-end': `${rotEnd}deg`,
+                    // Random animation properties for a natural effect
+                    animationDuration: `${Math.random() * 8 + 7}s`, // Duration from 7 to 15 seconds
+                    animationDelay: `${Math.random() * 10}s`,
+                    opacity: Math.random() * 0.6 + 0.1, // Opacity from 0.1 to 0.7
+                }
+            };
+        }), []);
+
+        return (
+            React.createElement('div', { className: "hearts-container", "aria-hidden": "true" },
+                hearts.map(heart => (
+                    React.createElement('div', { key: heart.id, className: "heart", style: heart.style })
+                ))
+            )
+        );
+      };
+
+      // Render the component in the HTML container
+      const heartsContainer = document.getElementById('hearts-background');
+      if (heartsContainer) {
+          const heartsRoot = ReactDOM.createRoot(heartsContainer);
+          heartsRoot.render(React.createElement(FloatingHeartsBackground, null));
+      }
     </script>
   </body>
 </html>
